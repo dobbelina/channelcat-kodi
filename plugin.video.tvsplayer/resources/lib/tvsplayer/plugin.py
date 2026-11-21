@@ -647,7 +647,7 @@ class Plugin(object):
         
         # Save the single entry
         self.store.save_entries(playlist["id"], [entry])
-        _notify("Added %s" % entry["name"])
+        _notify(_(30122) % entry["name"]) # "Added %s"
         
         # Refresh the playlists view to show the new addition
         self._end_action()
