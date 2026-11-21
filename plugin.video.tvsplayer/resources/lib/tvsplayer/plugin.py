@@ -321,8 +321,8 @@ class Plugin(object):
                 "type": fav["type"]
             })
 
-        # 1) Ask for a file name (default = "favorites")
-        name = xbmcgui.Dialog().input(_(30108), "favorites")
+        # 1) Ask for a file name (default = localized word for "Favourites")
+        name = xbmcgui.Dialog().input(_(30108), _(30002))
         if not name:
             return
         name = self._safe_filename(name)
