@@ -280,3 +280,7 @@ msgstr "%d chaînes ajoutées aux favoris"
 msgctxt "#30121"
 msgid "No channels found to add"
 msgstr "Aucune chaîne à ajouter trouvée"
+
+msgctxt "#30122"
+msgid "Added %s"
+msgstr "%s ajouté"

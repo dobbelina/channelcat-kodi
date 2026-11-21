@@ -281,3 +281,7 @@ msgstr ""
 msgctxt "#30121"
 msgid "No channels found to add"
 msgstr ""
+
+msgctxt "#30122"
+msgid "Added %s"
+msgstr ""

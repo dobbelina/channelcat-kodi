@@ -280,3 +280,7 @@ msgstr "%d チャンネルをお気に入りに追加しました"
 msgctxt "#30121"
 msgid "No channels found to add"
 msgstr "追加できるチャンネルが見つかりません"
+
+msgctxt "#30122"
+msgid "Added %s"
+msgstr "追加された%s"

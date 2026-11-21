@@ -280,3 +280,7 @@ msgstr "已将 %d 个频道添加到收藏夹"
 msgctxt "#30121"
 msgid "No channels found to add"
 msgstr "未找到可添加的频道"
+
+msgctxt "#30122"
+msgid "Added %s"
+msgstr "已添加 %s"
