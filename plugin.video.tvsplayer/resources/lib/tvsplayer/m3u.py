@@ -12,6 +12,11 @@ Also serializes store entries back to M3U (export()).
 """
 import re
 
+try:
+    from urllib.parse import unquote
+except ImportError:  # pragma: no cover
+    from urllib import unquote
+
 from . import net
 
 TV = "tv"
@@ -104,14 +109,32 @@ def _attr(value):
 def export(entries):
     """Serialize store entries (dict with name/logo/group/url/type) to M3U text.
 
-    Only #EXTINF:-1 with tvg-logo and the channel name is written: no group-title,
-    no radio attribute, and any Kodi 'url|Header=value' suffix is dropped so the
-    file stays portable.
+    Includes tvg-logo and group-title. Stream headers are written back as #EXTVLCOPT lines.
     """
     lines = ["#EXTM3U"]
     for e in entries:
-        url = e.get("url", "").split("|", 1)[0]   # strip Kodi header suffix
-        lines.append('#EXTINF:-1 tvg-logo="%s",%s'
-                     % (_attr(e.get("logo", "")), e.get("name", "")))
-        lines.append(url)
+        raw_url = e.get("url", "")
+        
+        # Split Kodi's "url|Header=value" syntax
+        url_parts = raw_url.split("|", 1)
+        base_url = url_parts[0]
+        
+        lines.append('#EXTINF:-1 tvg-logo="%s" group-title="%s",%s'
+                     % (_attr(e.get("logo", "")), _attr(e.get("group", "")), e.get("name", "")))
+        
+        # Write headers back as EXTVLCOPT if present
+        if len(url_parts) > 1:
+            headers_str = url_parts[1]
+            for pair in headers_str.split("&"):
+                key, _, value = pair.partition("=")
+                key = key.strip().lower()
+                # Apply unquote() to restore spaces and special characters
+                value = unquote(value.strip())
+                if key == "user-agent":
+                    lines.append("#EXTVLCOPT:http-user-agent=%s" % value)
+                elif key == "referer":
+                    lines.append("#EXTVLCOPT:http-referrer=%s" % value)
+        
+        lines.append(base_url)
+        
     return "\n".join(lines) + "\n"
