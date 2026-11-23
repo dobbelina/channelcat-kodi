@@ -16,6 +16,24 @@ KIND_URL = "url"
 KIND_FILE = "file"
 KIND_RADIO = "radiobrowser"
 
+# Source prefix of a playlist holding a single station picked from the radio search
+_SINGLE_RADIO = "single-radio:"
+
+
+def single_source(entry):
+    """Source string of a one-station radio playlist (the station itself is stored in it)."""
+    return _SINGLE_RADIO + json.dumps(entry, ensure_ascii=False)
+
+
+def single_entry(source):
+    """The station stored in a one-station playlist source, or None for any other source."""
+    if not source.startswith(_SINGLE_RADIO):
+        return None
+    try:
+        return json.loads(source[len(_SINGLE_RADIO):])
+    except ValueError:
+        return None
+
 
 class Store(object):
 

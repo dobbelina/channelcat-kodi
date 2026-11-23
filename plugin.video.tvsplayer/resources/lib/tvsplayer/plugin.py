@@ -16,7 +16,7 @@ import xbmcplugin
 import xbmcvfs
 
 from . import m3u, net, radiobrowser
-from .store import Store, KIND_FILE, KIND_RADIO, KIND_URL
+from .store import Store, KIND_FILE, KIND_RADIO, KIND_URL, single_entry, single_source
 
 ADDON = xbmcaddon.Addon()
 ADDON_NAME = ADDON.getAddonInfo("name")
@@ -31,6 +31,15 @@ _LANGUAGE_COUNTRY = {"it": "IT", "de": "DE", "fr": "FR", "es": "ES", "pt": "PT",
 
 def _(string_id):
     return ADDON.getLocalizedString(string_id)
+
+
+def _fmt(string_id, default, value):
+    """Localized '...%s...' string filled with value. Falls back to an English default when the
+    installed language file lacks the string (empty text) or its %s placeholder."""
+    text = _(string_id)
+    if "%s" not in text:
+        text = default
+    return text % value
 
 
 def _translate_path(path):
@@ -88,6 +97,14 @@ class Plugin(object):
         item = xbmcgui.ListItem(label=label)
         item.setArt({"icon": icon, "thumb": icon, "fanart": FANART})
         xbmcplugin.addDirectoryItem(self.handle, self.url(**params), item, isFolder=True)
+
+    def _action(self, label, icon, **params):
+        """Dialog-only entry: a non-folder, non-playable item. Kodi runs the plugin as a plain action,
+        so no directory listing is expected back and nothing is logged as a failed GetDirectory."""
+        item = xbmcgui.ListItem(label=label)
+        item.setArt({"icon": icon, "thumb": icon, "fanart": FANART})
+        item.setProperty("IsPlayable", "false")
+        xbmcplugin.addDirectoryItem(self.handle, self.url(**params), item, isFolder=False)
 
     def _end(self, content="", cache=False):
         if content:
@@ -274,8 +291,8 @@ class Plugin(object):
         # Add the export option at the bottom of the Favorites list
         fav_label_export = "[B][COLOR blue]%s[/COLOR][/B]" % _(30108)
         fav_label_delete = "[B][COLOR yellow]%s[/COLOR][/B]" % _(30112)
-        self._folder((fav_label_export), "DefaultFile.png", action="fav_export")
-        self._folder((fav_label_delete), "DefaultIconWarning.png", action="fav_delete_all")
+        self._action(fav_label_export, "DefaultFile.png", action="fav_export")
+        self._action(fav_label_delete, "DefaultIconWarning.png", action="fav_delete_all")
         
         self._end("videos")
 
@@ -426,11 +443,11 @@ class Plugin(object):
             ])
             xbmcplugin.addDirectoryItem(self.handle, self.url(action="playlist", id=p["id"]), item, isFolder=True)
             
-        self._folder("[B]+ %s[/B]" % _(30006), "DefaultAddSource.png", action="pl_add_url")
-        self._folder("[B]+ %s[/B]" % _(30007), "DefaultAddSource.png", action="pl_add_file")
-        self._folder("[B]+ %s[/B]" % _(30008), "DefaultAddSource.png", action="pl_add_radio")
-        self._folder("[B]+ %s[/B]" % _(30105), "DefaultAddSource.png", action="pl_add_genre")
-        self._folder("[B]+ %s[/B]" % _(30114), "DefaultAddSource.png", action="pl_search_radio")
+        self._action("[B]+ %s[/B]" % _(30006), "DefaultAddSource.png", action="pl_add_url")
+        self._action("[B]+ %s[/B]" % _(30007), "DefaultAddSource.png", action="pl_add_file")
+        self._action("[B]+ %s[/B]" % _(30008), "DefaultAddSource.png", action="pl_add_radio")
+        self._action("[B]+ %s[/B]" % _(30105), "DefaultAddSource.png", action="pl_add_genre")
+        self._action("[B]+ %s[/B]" % _(30114), "DefaultAddSource.png", action="pl_search_radio")
         self._end()
 
     def do_playlist(self):
@@ -442,9 +459,9 @@ class Plugin(object):
             self._folder(_(30043), "DefaultTVShows.png", action="groups", type=m3u.TV, pl=p["id"])
         if self.store.groups(m3u.RADIO, p["id"]):
             self._folder(_(30044), "DefaultMusicSongs.png", action="groups", type=m3u.RADIO, pl=p["id"])
-        self._folder(_(30108), "DefaultFile.png", action="pl_export", id=p["id"])
-        self._folder(_(30018), "DefaultAddonsUpdates.png", action="pl_refresh", id=p["id"])
-        self._folder(_(30019), "DefaultIconWarning.png", action="pl_delete", id=p["id"])
+        self._action(_(30108), "DefaultFile.png", action="pl_export", id=p["id"])
+        self._action(_(30018), "DefaultAddonsUpdates.png", action="pl_refresh", id=p["id"])
+        self._action(_(30019), "DefaultIconWarning.png", action="pl_delete", id=p["id"], back="1")
         self._end()
 
     def _load(self, playlist):
@@ -457,7 +474,12 @@ class Plugin(object):
             if limit <= 0:
                 limit = 10000  # max 10.000
             # stations_for() dispatches: country source (radiobrowser:XX) or genre (radiobrowser:tag:xxx)
-            entries = radiobrowser.stations_for(playlist["source"], limit)
+            station = single_entry(playlist["source"])
+            if station:
+                # Playlist made from one searched station: refresh re-saves that station only
+                entries = [station]
+            else:
+                entries = radiobrowser.stations_for(playlist["source"], limit)
         else:
             if playlist["kind"] == KIND_FILE:
                 f = xbmcvfs.File(playlist["source"])
@@ -468,7 +490,13 @@ class Plugin(object):
                 text = net.decode_text(text)
             else:
                 text = net.get_text(playlist["source"])
-            entries = m3u.parse(text, playlist["name"], playlist["type_mode"])
+            
+            # NEW: Detect if the downloaded text is actually a single HLS stream, not a list
+            if playlist["kind"] != KIND_FILE and m3u.is_hls_stream(text):
+                entries = m3u.single(playlist["source"], playlist["name"])
+            else:
+                entries = m3u.parse(text, playlist["name"], playlist["type_mode"])
+                
         if not entries:
             raise ValueError(_(30039))
         self.store.save_entries(playlist["id"], entries)
@@ -573,9 +601,8 @@ class Plugin(object):
         playlist = self.store.playlist(self.params.get("id", ""))
         if playlist and xbmcgui.Dialog().yesno(ADDON_NAME, _(30020).format(playlist["name"])):
             self.store.delete_playlist(playlist["id"])
-            if self.handle >= 0:
+            if self.params.get("back"):
                 # Opened from the playlist's own menu (not the context menu): back to the playlists
-                xbmcplugin.endOfDirectory(self.handle, succeeded=False)
                 xbmc.executebuiltin("Container.Update(%s,replace)" % self.url(action="playlists"))
                 return
         self._end_action()
@@ -602,7 +629,7 @@ class Plugin(object):
             progress.close()
 
         if not results:
-            xbmcgui.Dialog().ok(ADDON_NAME, _(30116) % query)
+            xbmcgui.Dialog().ok(ADDON_NAME, _fmt(30116, "No stations found for '%s'", query))
             self._end_action()
             return
 
@@ -615,7 +642,7 @@ class Plugin(object):
             labels.append(label)
 
         # Show the dialog (Kodi automatically adds a Cancel option at the end)
-        index = xbmcgui.Dialog().select(_(30118) % query, labels)  # "Results for: %s"
+        index = xbmcgui.Dialog().select(_fmt(30118, "Results for: %s", query), labels)  # "Results for: %s"
         if index < 0:
             # User pressed Cancel
             self._end_action()
@@ -642,12 +669,13 @@ class Plugin(object):
         }
 
         # Create a playlist named after the station (or a general "Search Results")
-        playlist_name = _(30119) % entry["name"]  # "Search: %s"
-        playlist = self.store.add_playlist(playlist_name, "", KIND_RADIO, m3u.TYPE_RADIO)
+        playlist_name = _fmt(30119, "Search: %s", entry["name"])  # "Search: %s"
+        playlist = self.store.add_playlist(playlist_name, single_source(entry), KIND_RADIO,
+                                           m3u.TYPE_RADIO)
         
         # Save the single entry
         self.store.save_entries(playlist["id"], [entry])
-        _notify(_(30122) % entry["name"]) # "Added %s"
+        _notify(_fmt(30122, "Added %s", entry["name"])) # "Added %s"
         
         # Refresh the playlists view to show the new addition
         self._end_action()
