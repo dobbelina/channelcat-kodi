@@ -1,5 +1,5 @@
 <div align="center">
-  <img height="300" src="https://raw.githubusercontent.com/dobbelina/channelcat-kodi/main/plugin.video.channelcat/resources/icon.png">
+  <img height="400" src="https://raw.githubusercontent.com/dobbelina/channelcat-kodi/main/plugin.video.channelcat/resources/fanart.jpg">
 </p>   
   
 # ChannelCat for Kodi </div>
