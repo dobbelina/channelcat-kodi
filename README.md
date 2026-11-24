@@ -1,5 +1,6 @@
 # ChannelCat for Kodi
 
+ChannelCat is a fork of [TVS Player](https://github.com/gnardelli/tvsplayer-kodi)  
 Play **your own M3U / M3U8 playlists** (from a web address or a file) and **thousands of free
 radio stations** from the open [Radio Browser](https://www.radio-browser.info) directory, by country
 and genre. Channels are sorted by category with logos and search, dead links are skipped
