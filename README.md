@@ -9,6 +9,10 @@ automatically, and favourites can be reordered.
 ChannelCat is only a player: it does not include or provide any TV channels or playlists.
 Add only content you have the right to use.
 
+Download here: [plugin.video.channelcat-1.1.2.zip](https://github.com/dobbelina/channelcat-kodi/releases/latest/download/plugin.video.channelcat-1.1.2.zip)
+
+![GitHub release (latest by date)](https://img.shields.io/github/downloads/dobbelina/channelcat-kodi/latest/total)
+
 ## Use
 
 - **Playlists → Add M3U playlist (web address / file)**, or **Add free radio stations by country or genre or search individual station**
