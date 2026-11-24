@@ -1,4 +1,8 @@
-# ChannelCat for Kodi
+<div align="center">
+  <img height="300" src="https://raw.githubusercontent.com/dobbelina/channelcat-kodi/main/plugin.video.channelcat/resources/icon.png">
+</p>   
+  
+# ChannelCat for Kodi </div>
 
 ChannelCat is a fork of [TVS Player](https://github.com/gnardelli/tvsplayer-kodi)  
 Play **your own M3U / M3U8 playlists** (from a web address or a file) and **thousands of free
