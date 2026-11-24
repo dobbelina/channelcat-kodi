@@ -1,0 +1,286 @@
+# Kodi Media Center language file
+# Addon Name: TVS Player
+# Addon id: plugin.video.tvsplayer
+msgid ""
+msgstr ""
+"Project-Id-Version: plugin.video.tvsplayer\n"
+"Language: pl_PL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgctxt "#30000"
+msgid "TV"
+msgstr "TV"
+
+msgctxt "#30001"
+msgid "Radio"
+msgstr "Radio"
+
+msgctxt "#30002"
+msgid "Favourites"
+msgstr "Ulubione"
+
+msgctxt "#30003"
+msgid "Playlists"
+msgstr "Playlisty"
+
+msgctxt "#30004"
+msgid "Search"
+msgstr "Szukaj"
+
+msgctxt "#30005"
+msgid "All"
+msgstr "Wszystkie"
+
+msgctxt "#30006"
+msgid "Add M3U playlist (web address)"
+msgstr "Dodaj playlistę M3U (adres internetowy)"
+
+msgctxt "#30007"
+msgid "Add M3U playlist (file)"
+msgstr "Dodaj playlistę M3U (plik)"
+
+msgctxt "#30008"
+msgid "Add free radio stations by country"
+msgstr "Dodaj darmowe stacje radiowe według kraju"
+
+msgctxt "#30009"
+msgid "Playlist address (http://… .m3u)"
+msgstr "Adres playlisty (http://… .m3u)"
+
+msgctxt "#30010"
+msgid "Name of the playlist"
+msgstr "Nazwa playlisty"
+
+msgctxt "#30011"
+msgid "Content of this playlist"
+msgstr "Zawartość tej playlisty"
+
+msgctxt "#30012"
+msgid "Automatic (TV and radio)"
+msgstr "Automatycznie (TV i radio)"
+
+msgctxt "#30013"
+msgid "TV only"
+msgstr "Tylko TV"
+
+msgctxt "#30014"
+msgid "Radio only"
+msgstr "Tylko radio"
+
+msgctxt "#30015"
+msgid "Loading…"
+msgstr "Ładowanie…"
+
+msgctxt "#30016"
+msgid "{1}: {0} channels"
+msgstr "{1}: {0} kanałów"
+
+msgctxt "#30017"
+msgid "Could not load the playlist"
+msgstr "Nie udało się wczytać playlisty"
+
+msgctxt "#30018"
+msgid "Refresh"
+msgstr "Odśwież"
+
+msgctxt "#30019"
+msgid "Delete"
+msgstr "Usuń"
+
+msgctxt "#30020"
+msgid "Delete \"{0}\"? Its channels are removed. Favourites stay."
+msgstr "Usunąć „{0}”? Jej kanały zostaną usunięte. Ulubione zostają."
+
+msgctxt "#30021"
+msgid "Add to TVS favourites"
+msgstr "Dodaj do ulubionych w TVS"
+
+msgctxt "#30022"
+msgid "Remove from favourites"
+msgstr "Usuń z ulubionych"
+
+msgctxt "#30023"
+msgid "Choose link"
+msgstr "Wybierz link"
+
+msgctxt "#30024"
+msgid "Link {0}"
+msgstr "Link {0}"
+
+msgctxt "#30025"
+msgid "Channel not available (no working link)"
+msgstr "Kanał niedostępny (żaden link nie działa)"
+
+msgctxt "#30026"
+msgid "No channels yet: add your M3U playlist in Playlists"
+msgstr "Brak kanałów: dodaj swoją playlistę M3U w Playlistach"
+
+msgctxt "#30027"
+msgid "Radio stations of…"
+msgstr "Stacje radiowe z…"
+
+msgctxt "#30028"
+msgid "Load free radio stations now? (Radio Browser, an open directory)"
+msgstr "Wczytać teraz darmowe stacje radiowe? (Radio Browser, otwarty katalog)"
+
+msgctxt "#30029"
+msgid "TVS Player does not provide any TV channels. Add only playlists you have the right to use."
+msgstr "TVS Player nie dostarcza kanałów TV. Dodawaj tylko playlisty, z których masz prawo korzystać."
+
+msgctxt "#30030"
+msgid "{0} channels · updated {1}"
+msgstr "{0} kanałów · aktualizacja {1}"
+
+msgctxt "#30031"
+msgid "Added to favourites"
+msgstr "Dodano do ulubionych"
+
+msgctxt "#30032"
+msgid "Move up"
+msgstr "W górę"
+
+msgctxt "#30033"
+msgid "Move down"
+msgstr "W dół"
+
+msgctxt "#30034"
+msgid "Search channels and radio"
+msgstr "Szukaj kanałów i radia"
+
+msgctxt "#30035"
+msgid "never"
+msgstr "nigdy"
+
+msgctxt "#30036"
+msgid "Which link?"
+msgstr "Który link?"
+
+msgctxt "#30038"
+msgid "{0} links"
+msgstr "{0} linków"
+
+msgctxt "#30039"
+msgid "No channels found: is this an M3U playlist?"
+msgstr "Nie znaleziono kanałów: czy to playlista M3U?"
+
+msgctxt "#30040"
+msgid "The address must start with http:// or https://"
+msgstr "Adres musi zaczynać się od http:// lub https://"
+
+msgctxt "#30041"
+msgid "Radio stations – {0}"
+msgstr "Stacje radiowe – {0}"
+
+msgctxt "#30042"
+msgid "Poor internet connection: the channel may not start"
+msgstr "Słabe połączenie z internetem: kanał może się nie uruchomić"
+
+msgctxt "#30043"
+msgid "TV channels of this playlist"
+msgstr "Kanały TV z tej playlisty"
+
+msgctxt "#30044"
+msgid "Radio stations of this playlist"
+msgstr "Stacje radiowe z tej playlisty"
+
+msgctxt "#30045"
+msgid "Video streaming M3U links suggestion"
+msgstr "Sugestia linków M3U do strumieniowego przesyłania wideo"
+
+msgctxt "#30046"
+msgid "For video streaming M3U links visit: https://github.com/iptv-org/iptv/blob/master/PLAYLISTS.md"
+msgstr "Linki do transmisji strumieniowej wideo M3U znajdziesz na stronie: https://github.com/iptv-org/iptv/blob/master/PLAYLISTS.md"
+
+msgctxt "#30100"
+msgid "General"
+msgstr "Ogólne"
+
+msgctxt "#30101"
+msgid "Check links before playing (skip dead links)"
+msgstr "Sprawdzaj linki przed odtworzeniem (pomijaj niedziałające)"
+
+msgctxt "#30102"
+msgid "Link check timeout (seconds)"
+msgstr "Limit czasu sprawdzania linków (sekundy)"
+
+msgctxt "#30103"
+msgid "Radio stations to load per category"
+msgstr "Liczba stacji radiowych do wczytania w każdej kategorii"
+
+msgctxt "#30104"
+msgid "First start done"
+msgstr "Pierwsze uruchomienie zakończone"
+
+msgctxt "#30105"
+msgid "Add free radio stations by genre"
+msgstr "Dodaj bezpłatne stacje radiowe według gatunku"
+
+msgctxt "#30106"
+msgid "Choose a genre"
+msgstr "Wybierz gatunek"
+
+msgctxt "#30107"
+msgid "Genre"
+msgstr "Gatunek"
+
+msgctxt "#30108"
+msgid "Save playlist as M3U"
+msgstr "Zapisz listę odtwarzania jako M3U"
+
+msgctxt "#30109"
+msgid "Playlist saved"
+msgstr "Lista odtwarzania została zapisana"
+
+msgctxt "#30110"
+msgid "Could not save the playlist"
+msgstr "Nie udało się zapisać listy odtwarzania"
+
+msgctxt "#30111"
+msgid "Add all to TVS favourites"
+msgstr "Dodaj wszystkie do ulubionych w TVS"
+
+msgctxt "#30112"
+msgid "Delete all favourites"
+msgstr "Usuń wszystkie ulubione"
+
+msgctxt "#30113"
+msgid "Are you sure you want to delete all favourites?"
+msgstr "Czy na pewno chcesz usunąć wszystkie ulubione?"
+
+msgctxt "#30114"
+msgid "Search Internet Radio Station"
+msgstr "Wyszukaj internetową stację radiową"
+
+msgctxt "#30115"
+msgid "This station has no valid stream URL."
+msgstr "Ta stacja nie ma prawidłowego adresu URL strumienia."
+
+msgctxt "#30116"
+msgid "No stations found for '%s'"
+msgstr "Nie znaleziono stacji dla „%s”"
+
+msgctxt "#30117"
+msgid "Searching..."
+msgstr "Wyszukiwanie..."
+
+msgctxt "#30118"
+msgid "Results for: %s"
+msgstr "Wyniki dla: %s"
+
+msgctxt "#30119"
+msgid "Search: %s"
+msgstr "Szukaj: %s"
+
+msgctxt "#30120"
+msgid "Added %d channels to favourites"
+msgstr "Dodano %d kanałów do ulubionych"
+
+msgctxt "#30121"
+msgid "No channels found to add"
+msgstr "Nie znaleziono kanałów do dodania"
+
+msgctxt "#30122"
+msgid "Added %s"
+msgstr "Dodano %s"
