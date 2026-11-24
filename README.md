@@ -1,18 +1,12 @@
-# TVS Player for Kodi
+# ChannelCat for Kodi
 
 Play **your own M3U / M3U8 playlists** (from a web address or a file) and **thousands of free
 radio stations** from the open [Radio Browser](https://www.radio-browser.info) directory, by country
 and genre. Channels are sorted by category with logos and search, dead links are skipped
 automatically, and favourites can be reordered.
 
-TVS Player is only a player: it does not include or provide any TV channels or playlists.
+ChannelCat is only a player: it does not include or provide any TV channels or playlists.
 Add only content you have the right to use.
-
-Also available:
-- **Android phones and tablets** on Google Play:
-  [TVS Player](https://play.google.com/store/apps/details?id=com.tvsplayer.app) (free) and
-  [TVS Player Pro](https://play.google.com/store/apps/details?id=com.tvs_player_pro) (TV guide, rewind, recordings)
-- **Any web browser**, nothing to install: [tvsplayer.app](https://tvsplayer.app)
 
 ## Install in Kodi (Kodi 19 Matrix or newer)
 
