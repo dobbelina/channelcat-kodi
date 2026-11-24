@@ -10,7 +10,7 @@ Add only content you have the right to use.
 
 ## Use
 
-- **Playlists → Add M3U playlist (web address / file)**, or **Add free radio stations by country**
+- **Playlists → Add M3U playlist (web address / file)**, or **Add free radio stations by country or genre or search individual station**
 - **TV** and **Radio**: channels by category; **Search** across all playlists
 - To reload a playlist that changed online: **Playlists → your playlist → Refresh**
 - Only the channels of one playlist: **Playlists → your playlist → TV channels / Radio stations of this playlist**
