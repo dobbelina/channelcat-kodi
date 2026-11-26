@@ -2,6 +2,7 @@
 <addon id="plugin.video.channelcat" name="ChannelCat" version="1.1.2" provider-name="ChannelCat">
     <requires>
         <import addon="xbmc.python" version="3.0.0"/>
+        <import addon="inputstream.adaptive" version="19.0.0"/>
     </requires>
     <extension point="xbmc.python.pluginsource" library="main.py">
         <provides>video audio</provides>
@@ -49,8 +50,8 @@ Canali ordinati per categoria con loghi e ricerca. I canali con più flussi salt
         <disclaimer lang="ja_JP">ChannelCat はプレーヤーにすぎず、テレビチャンネルやプレイリストを提供しません。利用する権利のあるコンテンツだけを追加してください。ラジオ局データ：radio-browser.info。</disclaimer>
         <platform>all</platform>
         <license>GPL-2.0-or-later</license>
-        <website>https://github.com/dobbelina/tvsplayer-kodi</website>
-        <source>https://github.com/dobbelina/tvsplayer-kodi</source>
+        <website>https://github.com/dobbelina/channelcat-kodi</website>
+        <source>https://github.com/dobbelina/channelcat-kodi</source>
         <news>1.1.2 - Added M3U file export feature, Added Search by genre, Added search by individual radio channel.
 #EXTVLCOPT:http-user-agent &amp; #EXTVLCOPT:http-referrer understood both by player and export feature.
 In 9 languages (English, Italian, French, German, Spanish, Portuguese, Polish, Chinese, Japanese).
