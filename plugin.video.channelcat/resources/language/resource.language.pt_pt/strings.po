@@ -1,9 +1,9 @@
 # Kodi Media Center language file
-# Addon Name: TVS Player
-# Addon id: plugin.video.tvsplayer
+# Addon Name: ChannelCat
+# Addon id: plugin.video.channelcat
 msgid ""
 msgstr ""
-"Project-Id-Version: plugin.video.tvsplayer\n"
+"Project-Id-Version: plugin.video.channelcat\n"
 "Language: pt_PT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -126,8 +126,8 @@ msgid "Load free radio stations now? (Radio Browser, an open directory)"
 msgstr "Carregar agora as rádios gratuitas? (Radio Browser, um diretório aberto)"
 
 msgctxt "#30029"
-msgid "TVS Player does not provide any TV channels. Add only playlists you have the right to use."
-msgstr "O TVS Player não fornece canais de TV. Adicione apenas listas que tem o direito de usar."
+msgid "ChannelCat does not provide any TV channels. Add only playlists you have the right to use."
+msgstr "O ChannelCat não fornece canais de TV. Adicione apenas listas que tem o direito de usar."
 
 msgctxt "#30030"
 msgid "{0} channels · updated {1}"
@@ -284,3 +284,7 @@ msgstr "Não foram encontrados canais para adicionar"
 msgctxt "#30122"
 msgid "Added %s"
 msgstr "Adicionado %s"
+
+msgctxt "#30123"
+msgid "Use InputStream Adaptive for HLS streams"
+msgstr "Utilizar o InputStream Adaptive para fluxos HLS"
