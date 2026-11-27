@@ -587,15 +587,15 @@ class Plugin(object):
             return
         language = (xbmc.getLanguage(xbmc.ISO_639_1) or "en").lower()
         wanted = _LANGUAGE_COUNTRY.get(language, "US")
-        preselect = next((i for i, c in enumerate(countries) if c[0] == wanted), 0)
+        # The country matching the Kodi language comes first in the list
+        countries = sorted(countries, key=lambda c: c[0] != wanted)
         labels = ["%s (%d)" % (name, count) for _code, name, count in countries]
-        index = xbmcgui.Dialog().select(_(30027), labels, preselect=preselect)
-        if index < 0:
-            return
-        code, name, _count = countries[index]
-        playlist = self.store.add_playlist(_(30041).format(name), radiobrowser.source(code), KIND_RADIO,
-                                           m3u.TYPE_RADIO)
-        self._load_with_progress(playlist, delete_on_error=True)
+        chosen = xbmcgui.Dialog().multiselect(_(30027), labels)  # OK / Cancel; None on cancel
+        for index in chosen or []:
+            code, name, _count = countries[index]
+            playlist = self.store.add_playlist(_(30041).format(name), radiobrowser.source(code),
+                                               KIND_RADIO, m3u.TYPE_RADIO)
+            self._load_with_progress(playlist, delete_on_error=True)
 
     # ── genre search ─────────────────────────────────────────────────────
     def do_pl_add_genre(self):
@@ -614,13 +614,12 @@ class Plugin(object):
             return
         # No language preset for genres (tags are in English) — show the most popular first
         labels = ["%s (%d)" % (label, count) for _tag, label, count in tags]
-        index = xbmcgui.Dialog().select(_(30106), labels)
-        if index < 0:
-            return
-        tag, label, _count = tags[index]
-        playlist = self.store.add_playlist("%s: %s" % (_(30107), label),
-                                           radiobrowser.tag_source(tag), KIND_RADIO, m3u.TYPE_RADIO)
-        self._load_with_progress(playlist, delete_on_error=True)
+        chosen = xbmcgui.Dialog().multiselect(_(30106), labels)  # OK / Cancel; None on cancel
+        for index in chosen or []:
+            tag, label, _count = tags[index]
+            playlist = self.store.add_playlist("%s: %s" % (_(30107), label),
+                                               radiobrowser.tag_source(tag), KIND_RADIO, m3u.TYPE_RADIO)
+            self._load_with_progress(playlist, delete_on_error=True)
 
     def do_pl_refresh(self):
         playlist = self.store.playlist(self.params.get("id", ""))
