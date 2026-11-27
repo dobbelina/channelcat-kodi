@@ -16,6 +16,9 @@ automatically, and favourites can be reordered.
 - Export playlist as a M3U file
 - Added inputstream adaptive support for video links
 
+**#EXTVLCOPT:http-user-agent** & **#EXTVLCOPT:http-referrer** understood both 
+by player and export feature.
+
 ChannelCat is only a player: it does not include or provide any TV channels or playlists.
 Add only content you have the right to use.
 
