@@ -10,6 +10,12 @@ radio stations** from the open [Radio Browser](https://www.radio-browser.info) d
 and genre. Channels are sorted by category with logos and search, dead links are skipped
 automatically, and favourites can be reordered.
 
+✨**Improvements made from the original:**
+- Add free radio stations by genre
+- Search Internet Radio Station
+- Export playlist as a M3U file
+- Added inputstream adaptive support for video links
+
 ChannelCat is only a player: it does not include or provide any TV channels or playlists.
 Add only content you have the right to use.
 
