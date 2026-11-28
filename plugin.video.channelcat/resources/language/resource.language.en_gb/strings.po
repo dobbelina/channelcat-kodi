@@ -94,7 +94,7 @@ msgid "Delete \"{0}\"? Its channels are removed. Favourites stay."
 msgstr ""
 
 msgctxt "#30021"
-msgid "Add to TVS favourites"
+msgid "Add to CCAT favourites"
 msgstr ""
 
 msgctxt "#30022"
@@ -239,7 +239,7 @@ msgid "Could not save the playlist"
 msgstr ""
 
 msgctxt "#30111"
-msgid "Add all to TVS favourites"
+msgid "Add all to CCAT favourites"
 msgstr ""
 
 msgctxt "#30112"

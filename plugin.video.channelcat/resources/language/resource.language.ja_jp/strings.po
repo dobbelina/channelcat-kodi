@@ -94,8 +94,8 @@ msgid "Delete \"{0}\"? Its channels are removed. Favourites stay."
 msgstr "「{0}」を削除しますか？チャンネルは削除されます。お気に入りは残ります。"
 
 msgctxt "#30021"
-msgid "Add to TVS favourites"
-msgstr "TVSのお気に入りに追加"
+msgid "Add to CCAT favourites"
+msgstr "CCATのお気に入りに追加"
 
 msgctxt "#30022"
 msgid "Remove from favourites"
@@ -238,8 +238,8 @@ msgid "Could not save the playlist"
 msgstr "プレイリストを保存できませんでした"
 
 msgctxt "#30111"
-msgid "Add all to TVS favourites"
-msgstr "すべてTVSのお気に入りに追加"
+msgid "Add all to CCAT favourites"
+msgstr "すべてCCATのお気に入りに追加"
 
 msgctxt "#30112"
 msgid "Delete all favourites"
